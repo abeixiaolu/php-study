@@ -5,8 +5,9 @@ require "functions.php";
 // require "router.php";
 
 require "Database.php";
+$config = require "config.php";
 
-$db = new Database();
-$posts = $db->query("select * from posts;");
+$db = new Database($config['database']);
+$posts = $db->query("select * from posts where id = 2")->fetch();
 
 dd($posts);
