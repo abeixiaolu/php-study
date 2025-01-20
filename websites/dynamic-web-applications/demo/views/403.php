@@ -1,5 +1,5 @@
 <?php
-$heading = "404 - Page Not Found";
+$heading = "403 - You are not allowed to access this page";
 ?>
 
 <?php require "partials/head.php"; ?>
@@ -8,7 +8,7 @@ $heading = "404 - Page Not Found";
 
 <main>
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <a href="/" class="text-blue-500 underline">Go back home</a>
+    <a href="/" class="text-rose-500 underline">Go back home</a>
   </div>
 </main>
 
