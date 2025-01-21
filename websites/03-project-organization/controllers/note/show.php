@@ -1,6 +1,6 @@
 <?php
-$heading = "Note Detail";
-$config = require "config.php";
+
+$config = require base_path("config.php");
 $db = new Database($config['database']);
 
 $note = $db->query("select * from notes where id = :id", ['id' => $_GET['id']])->fetch();
@@ -16,4 +16,7 @@ if (! ($note['user_id'] === $currentUserId)) {
 
 
 
-require "views/note/show.view.php";
+view('note/show.view.php', [
+  'heading' => 'Note Detail',
+  'note' => $note
+]);
