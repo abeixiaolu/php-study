@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function dd($value)
 {
   echo "<pre>";
@@ -22,4 +24,12 @@ function view($path, $params)
 {
   extract($params);
   require base_path("views/{$path}");
+}
+
+function authorize($condition, $status = Response::FORBIDDEN)
+{
+  if (! $condition) {
+    abort($status);
+  }
+  return true;
 }
