@@ -11,6 +11,7 @@
 
     <p class="mt-4">
     <form method="post">
+      <input type="hidden" name="_method" value="DELETE">
       <input type="hidden" name="id" value="<?= $note['id'] ?>">
       <button type="submit" class="text-red-500 hover:underline">Delete</button>
     </form>

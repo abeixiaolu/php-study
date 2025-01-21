@@ -11,11 +11,10 @@ if (! $note) {
   abort();
 }
 
-if (! authorize($note['user_id'] === $currentUserId)) {
-  abort(Response::FORBIDDEN);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (authorize($note['user_id'] === $currentUserId)) {
+    $db->query("delete from notes where id = :id", ['id' => $_POST['id']]);
+    header('location: /notes');
+    exit();
+  }
 }
-
-view('note/show.view.php', [
-  'heading' => 'Note Detail',
-  'note' => $note
-]);
