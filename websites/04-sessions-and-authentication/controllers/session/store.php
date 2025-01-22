@@ -12,30 +12,35 @@ if (!Validator::email($email)) {
   $errors['email'] = 'Please provide a valid email address.';
 }
 
-if (!Validator::string($password, 7, 255)) {
-  $errors['password'] = 'Please provide a password of at least 7 characters.';
+if (!Validator::string($password)) {
+  $errors['password'] = 'Please provide a correct password.';
 }
 
 if (!empty($errors)) {
-  view('register.view.php', [
+  view('login.view.php', [
     'errors' => $errors
   ]);
 }
 
 $user = $db->query('select * from users where email = :email', ['email' => $email])->find();
 
-if ($user) {
-  header('location: /');
-  exit();
+if (!$user) {
+  return view('login.view.php', [
+    'errors' => [
+      'email' => 'No user found with this email address.'
+    ]
+  ]);
 }
-$db->query('insert into users (email, password) values (:email, :password)', [
-  'email' => $email,
-  'password' => password_hash($password, PASSWORD_BCRYPT),
-]);
+
+if (!password_verify($password, $user['password'])) {
+  return view('login.view.php', [
+    'errors' => [
+      'password' => 'Password is incorrect.'
+    ]
+  ]);
+}
 
 login([
   "email" => $email,
 ]);
-
 header('location: /');
-die();
