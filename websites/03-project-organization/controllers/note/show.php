@@ -3,16 +3,14 @@
 use Core\App;
 
 $db = App::container()->resolve(Core\Database::class);
-$currentUserId = 1;
-$note = $db->query("select * from notes where id = :id", ['id' => $_GET['id']])->fetch();
+$note = $db->query("select * from notes where id = :id", ['id' => $_GET['id']])->findOrFail();
 
 if (! $note) {
   abort();
 }
 
-if (! authorize($note['user_id'] === $currentUserId)) {
-  abort(Response::FORBIDDEN);
-}
+$currentUserId = 1;
+authorize($note['user_id'] === $currentUserId);
 
 view('note/show.view.php', [
   'heading' => 'Note Detail',

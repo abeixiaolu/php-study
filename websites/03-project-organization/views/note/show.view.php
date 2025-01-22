@@ -9,13 +9,14 @@
     </p>
     <p><?= htmlspecialchars($note['body']) ?></p>
 
-    <p class="mt-4">
-    <form method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="hidden" name="id" value="<?= $note['id'] ?>">
-      <button type="submit" class="text-red-500 hover:underline">Delete</button>
-    </form>
-    </p>
+    <div class="mt-4 flex gap-4">
+      <a href="/note/edit?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">Edit</a>
+      <form method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="id" value="<?= $note['id'] ?>">
+        <button type="submit" class="text-red-500 hover:underline">Delete</button>
+      </form>
+    </div>
   </div>
 </main>
 
