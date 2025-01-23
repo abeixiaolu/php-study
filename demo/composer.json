@@ -1,0 +1,16 @@
+{
+    "name": "abei/demo",
+    "authors": [
+        {
+            "name": "xiaoluabei",
+            "email": "xiaoluabei@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core",
+            "Http\\": "Http"
+        }
+    }
+}
