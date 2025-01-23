@@ -50,5 +50,5 @@ function redirect($uri)
 
 function old($key, $default = '')
 {
-  return Session::get($key, $default);
+  return Session::get('old')[$key] ?? $default;
 }
