@@ -1,3 +1,7 @@
 <?php
 
-view('login.view.php');
+use Core\Session;
+
+view('login.view.php', [
+  'errors' => Session::get('errors')
+]);

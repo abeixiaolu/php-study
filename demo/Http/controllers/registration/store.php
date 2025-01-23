@@ -33,8 +33,8 @@ $db->query('insert into users (email, password) values (:email, :password)', [
   'password' => password_hash($password, PASSWORD_BCRYPT),
 ]);
 
-login([
-  "email" => $email,
+(new Core\Authenticator)->login([
+  'email' => $email,
 ]);
 
 header('location: /');

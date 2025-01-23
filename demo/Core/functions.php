@@ -1,6 +1,7 @@
 <?php
 
 use Core\Response;
+use Core\Session;
 
 function dd($value)
 {
@@ -41,16 +42,13 @@ function abort($code = Response::NOT_FOUND)
   die();
 }
 
-function login($user)
+function redirect($uri)
 {
-  $_SESSION['user'] = $user;
-  session_regenerate_id();
+  header("Location: {$uri}");
+  exit();
 }
 
-function logout()
+function old($key, $default = '')
 {
-  session_reset();
-  $params = session_get_cookie_params();
-  setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
-  header('Location: /');
+  return Session::get($key, $default);
 }
