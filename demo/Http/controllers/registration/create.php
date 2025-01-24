@@ -1,5 +1,8 @@
 <?php
 
+use Core\Session;
+
 view('register.view.php', [
-  'errors' => []
+  'errors' => Session::get('errors'),
+  'old' => Session::get('old'),
 ]);
