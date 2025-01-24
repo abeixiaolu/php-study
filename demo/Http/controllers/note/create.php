@@ -1,7 +1,9 @@
 <?php
 
+use Core\Session;
+
 view('note/create.view.php', [
   'heading' => 'Create Note',
-  'body' => '',
-  'errors' => [],
+  'body' => old('body'),
+  'errors' => Session::get('errors'),
 ]);

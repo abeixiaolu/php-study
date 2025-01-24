@@ -20,7 +20,7 @@ if (!$user) {
   ])->id();
   $authenticator->login([
     'email' => $_POST['email'],
-    'id' => $newUser,
+    'id' => $newUserId,
   ]);
   redirect('/');
 }
