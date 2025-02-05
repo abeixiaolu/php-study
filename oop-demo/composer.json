@@ -1,0 +1,18 @@
+{
+    "name": "abei/oop-demo",
+    "authors": [
+        {
+            "name": "xiaoluabei",
+            "email": "xiaoluabei@gmail.com"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php": "^3.339",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
