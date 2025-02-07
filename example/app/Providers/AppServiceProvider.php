@@ -25,3 +25,5 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useTailwind();
     }
 }
+
+// php artisan vendor:publish and search pagination
