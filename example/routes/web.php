@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Job;
+use App\Models\JobListing;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,13 +9,13 @@ Route::get('/', function () {
 
 Route::get('/jobs', function () {
     return view('jobs', [
-        'jobs' => Job::all()
+        'jobs' => JobListing::all()
     ]);
 });
 
 Route::get('/jobs/{id}', function ($id) {
     return view('job', [
-        'job' => Job::find($id)
+        'job' => JobListing::find($id)
     ]);
 });
 
