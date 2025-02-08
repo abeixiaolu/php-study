@@ -19,4 +19,4 @@ class Tag extends Model
 }
 
 // 获取 tag 的 jobs 的 title 和 id 返回的对象数组 id 为 key，title 为 value
-Tag::find(1)->jobs->pluck('title', 'id');
+// Tag::find(1)->jobs->pluck('title', 'id');
