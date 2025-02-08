@@ -23,11 +23,37 @@ Route::get('/jobs/{id}', function ($id) {
     ]);
 });
 
-Route::post('/jobs', function () {
-    // validation todo
+Route::get('/jobs/{id}/edit', function ($id) {
+    return view('jobs.edit', [
+        'job' => Job::find($id)
+    ]);
+});
+
+Route::delete('/jobs/{id}', function ($id) {
+    Job::find($id)->delete();
+    return redirect('/jobs');
+});
+
+Route::patch('/jobs/{id}', function ($id) {
+    $job = Job::find($id);
     request()->validate([
         'title' => ['required', 'min:3', 'max:255'],
-        'salary' => ['required', 'numeric'],
+        'salary' => ['required'],
+        'description' => [],
+    ]);
+    $job->update([
+        'title' => request('title'),
+        'salary' => request('salary'),
+        'description' => request('description'),
+    ]);
+    return redirect('/jobs/' . $id);
+});
+
+
+Route::post('/jobs', function () {
+    request()->validate([
+        'title' => ['required', 'min:3', 'max:255'],
+        'salary' => ['required'],
     ]);
     Job::create([
         'title' => request('title'),
