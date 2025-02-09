@@ -11,26 +11,26 @@
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <x-form-field>
               <x-form-label for="name">Name</x-form-label>
-              <x-form-input name="name" id="name" placeholder="Name" required />
+              <x-form-input name="name" id="name" placeholder="Name" required :value="old('name')" />
               <x-form-error name="name" />
             </x-form-field>
 
             <x-form-field>
               <x-form-label for="email">Email</x-form-label>
-              <x-form-input name="email" id="email" placeholder="Email" required />
+              <x-form-input name="email" id="email" placeholder="Email" required :value="old('email')" />
               <x-form-error name="email" />
             </x-form-field>
 
             <x-form-field>
               <x-form-label for="password">Password</x-form-label>
-              <x-form-input name="password" id="password" placeholder="Password" required />
+              <x-form-input name="password" id="password" placeholder="Password" required :value="old('password')" />
               <x-form-error name="password" />
             </x-form-field>
 
             <x-form-field>
               <x-form-label for="password_confirmation">Password Confirmation</x-form-label>
               <x-form-input name="password_confirmation" id="password_confirmation" placeholder="Password Confirmation"
-                required />
+                required :value="old('password_confirmation')" />
               <x-form-error name="password_confirmation" />
             </x-form-field>
 
