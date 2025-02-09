@@ -44,7 +44,6 @@ class JobController extends Controller
         request()->validate([
             'title' => ['required', 'min:3', 'max:255'],
             'salary' => ['required'],
-            'description' => [],
         ]);
         $job->update([
             'title' => request('title'),
@@ -60,6 +59,7 @@ class JobController extends Controller
             'title' => ['required', 'min:3', 'max:255'],
             'salary' => ['required'],
         ]);
+
         Job::create([
             'title' => request('title'),
             'salary' => request('salary'),
