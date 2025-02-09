@@ -10,6 +10,8 @@
     </p>
     <p class="text-gray-400">{{ $job['description'] }}</p>
 
-    <x-button-link href="/jobs/{{ $job->id }}/edit">Edit</x-button-link>
+    @can('edit-job', $job)
+      <x-button-link href="/jobs/{{ $job->id }}/edit">Edit</x-button-link>
+    @endcan
   </div>
 </x-layout>
